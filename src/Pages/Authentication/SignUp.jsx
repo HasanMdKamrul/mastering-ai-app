@@ -1,7 +1,82 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [password, setPassword] = useState("");
+
+  // ** AuthContext
+  const { createUser } = useContext(AuthContext);
+  // ** event handlers
+  const emailHandler = (event) => {
+    const emailOutput = event.target.value;
+    if (/^\S+@\S+\.\S+$/.test(emailOutput)) {
+      setEmail(emailOutput);
+      setError("");
+    } else {
+      setError("Please provide a valid email");
+    }
+  };
+
+  const handlePassword = (event) => {
+    const passwordOutput = event.target.value;
+
+    if (!/(?=.*?[A-Z])/.test(passwordOutput)) {
+      setPasswordError("At least one upper case");
+    } else if (!/(?=.*?[a-z])/.test(passwordOutput)) {
+      setPasswordError("At least one lower case English letter");
+    } else if (!/(?=.*?[0-9])/.test(passwordOutput)) {
+      setPasswordError("At least one digit");
+    } else if (!/(?=.*?[#?!@$%^&*-])/.test(passwordOutput)) {
+      setPasswordError("At least one special character");
+    } else if (passwordOutput.length < 6) {
+      setPasswordError("At least six characters");
+    } else {
+      setPasswordError("");
+      setPassword(passwordOutput);
+    }
+  };
+
+  // ** Overall Submit handler
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const confirm = form.confirm.value;
+
+    if (!(password === confirm)) {
+      toast.error(`Password didn't match`);
+      return;
+    }
+
+    // ** Email and password SignUp
+
+    // ** create user
+
+    const emailPassUser = async () => {
+      try {
+        const result = await createUser(email, password);
+        console.log(result.user);
+        form.reset();
+        toast.success("User logged in", {
+          position: "top-center",
+          autoClose: 5000,
+        });
+      } catch (error) {
+        toast.error(error.message, {
+          position: "top-right",
+          autoClose: 5000,
+        });
+      }
+    };
+    emailPassUser();
+  };
+
   return (
     <div className="flex justify-center items-center pt-8">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
@@ -10,6 +85,7 @@ const SignUp = () => {
           <p className="text-sm text-gray-400">Create a new account</p>
         </div>
         <form
+          onSubmit={handleSubmit}
           noValidate=""
           action=""
           className="space-y-12 ng-untouched ng-pristine ng-valid"
@@ -21,8 +97,8 @@ const SignUp = () => {
               </label>
               <input
                 type="text"
-                name="name"
-                id="name"
+                name="firstname"
+                id="firstname"
                 placeholder="Enter Your First Name Here"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:border-gray-900 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
@@ -34,9 +110,22 @@ const SignUp = () => {
               </label>
               <input
                 type="text"
-                name="name"
-                id="name"
+                name="lastname"
+                id="lastname"
                 placeholder="Enter Your Last Name Here"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:border-gray-900 bg-gray-200 text-gray-900"
+                data-temp-mail-org="0"
+              />
+            </div>
+            <div>
+              <label htmlFor="text" className="block mb-2 text-sm">
+                Photo Url
+              </label>
+              <input
+                type="text"
+                name="photoURL"
+                id="photoURL"
+                placeholder="Provide your photo url"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:border-gray-900 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
@@ -44,8 +133,11 @@ const SignUp = () => {
             <div>
               <label htmlFor="email" className="block mb-2 text-sm">
                 Email address
+                <span>*</span>
               </label>
               <input
+                required
+                onChange={emailHandler}
                 type="email"
                 name="email"
                 id="email"
@@ -53,17 +145,46 @@ const SignUp = () => {
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:border-gray-900 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
+              {error && (
+                <small className="flex items-center text-red-600">
+                  <MdClose />
+                  {error}
+                </small>
+              )}
             </div>
             <div>
               <div className="flex justify-between mb-2">
                 <label htmlFor="password" className="text-sm">
                   Password
+                  <span>*</span>
+                </label>
+              </div>
+              <input
+                onChange={handlePassword}
+                type="password"
+                name="password"
+                id="password"
+                placeholder="*******"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900"
+              />
+              {passwordError && (
+                <small className="flex items-center text-red-600">
+                  <MdClose />
+                  {passwordError}
+                </small>
+              )}
+            </div>
+            <div>
+              <div className="flex justify-between mb-2">
+                <label htmlFor="password" className="text-sm">
+                  Confirm Password
+                  <span>*</span>
                 </label>
               </div>
               <input
                 type="password"
-                name="password"
-                id="password"
+                name="confirm"
+                id="confirm"
                 placeholder="*******"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900"
               />
