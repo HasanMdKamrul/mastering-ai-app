@@ -3,10 +3,10 @@ import { MdOutlineCategory, MdOutlineHourglassTop } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const Course = ({ course }) => {
-  const { title, price, image, category, duration } = course;
+  const { title, price, image, category, duration, id } = course;
 
   return (
-    <Link to="/">
+    <Link to={`/courses/${id}`}>
       <div className="overflow-hidden transition-shadow duration-300 bg-white  hover:bg-sky-400 hover:shadow-2xl p-3 rounded-2xl ">
         <img src={image} className="object-cover w-full h-64 rounded" alt="" />
 
