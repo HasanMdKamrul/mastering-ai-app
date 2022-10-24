@@ -12,7 +12,7 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
 
   // ** AuthContext
-  const { createUser, socialSignIn } = useContext(AuthContext);
+  const { createUser, socialSignIn, profileUpdater } = useContext(AuthContext);
   // ** event handlers
   const emailHandler = (event) => {
     const emailOutput = event.target.value;
@@ -49,6 +49,14 @@ const SignUp = () => {
 
     const form = event.target;
     const confirm = form.confirm.value;
+    const firstName = form.firstname.value;
+    const lastName = form.lastname.value;
+    const photoURL = form.photoURL.value;
+
+    const profileInfo = {
+      displayName: `${firstName} ${lastName}`,
+      photoURL,
+    };
 
     if (!(password === confirm)) {
       toast.error(`Password didn't match`);
@@ -63,6 +71,9 @@ const SignUp = () => {
       try {
         const result = await createUser(email, password);
         console.log(result.user);
+        profileUpdater(profileInfo)
+          .then(() => console.log("profile updated"))
+          .catch((error) => toast.error(error.message));
         form.reset();
         toast.success("User logged in", {
           position: "top-center",
