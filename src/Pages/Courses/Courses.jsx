@@ -1,13 +1,14 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import Course from "../Course/Course";
+import CourseSideBar from "../Shared/Others/CourseSideBar/CourseSideBar";
 
 const Courses = () => {
   const courses = useLoaderData();
 
   return (
     <div className="grid lg:grid-cols-12 ">
-      <div className="lg:col-start-1 lg:col-end-10 ">
+      <div className="lg:col-start-1 lg:col-end-9 ">
         <h1 className="lg:text-3xl font-extralight mt-2  text-center ">
           Our Courses
         </h1>
@@ -19,8 +20,12 @@ const Courses = () => {
           </div>
         </div>
       </div>
-      <div className="lg:col-start-10 lg:col-end-12">
-        <h1>Right side</h1>
+      <div className="lg:col-start-9 lg:col-end-12 mt-28">
+        <ul className="menu  overflow-y-auto w-full bg-gray-50 shadow text-base-content">
+          {courses.map((course) => (
+            <CourseSideBar key={course.id} course={course} />
+          ))}
+        </ul>
       </div>
     </div>
   );
