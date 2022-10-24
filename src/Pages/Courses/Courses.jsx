@@ -21,7 +21,10 @@ const Courses = () => {
         </div>
       </div>
       <div className="lg:col-start-9 lg:col-end-12 mt-28">
-        <ul className="menu  overflow-y-auto w-full bg-gray-50 shadow text-base-content">
+        <h2 className="text-sm font-semibold tracking-widest uppercase">
+          Course Outline
+        </h2>
+        <ul className="menu  overflow-y-auto w-full bg-blue-100 shadow text-gray-900">
           {courses.map((course) => (
             <CourseSideBar key={course.id} course={course} />
           ))}
