@@ -1,14 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { MdLogin, MdLogout } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 import logo from "../../../assets/Images/Logo/icons8-artificial-intelligence-100.png";
+import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [toggle, setToggle] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
 
   const toggleHandler = () => {
     setToggle(!toggle);
+  };
+
+  const signoutHandler = () => {
+    const userSignOut = async () => {
+      try {
+        await logOut();
+        toast.success("Log Out successfull");
+      } catch (error) {
+        toast.error(error.message);
+      }
+    };
+    userSignOut();
   };
 
   return (
@@ -55,10 +70,9 @@ const Navbar = () => {
               Courses
             </NavLink>
           </li>
-
           <li>
             <NavLink
-              to="/orders"
+              to="/blog"
               aria-label="About "
               title="About "
               className={({ isActive }) =>
@@ -71,22 +85,43 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <MdLogin />
+            <NavLink
+              to="/faq"
+              aria-label="About "
+              title="About "
+              className={({ isActive }) =>
+                isActive
+                  ? "font-medium tracking-wide text-blue-600 transition-colors duration-200 hover:text-teal-accent-400"
+                  : "font-medium tracking-wide text-dark transition-colors duration-200 hover:text-teal-accent-400"
+              }
+            >
+              FAQ
+            </NavLink>
           </li>
-          <li>
-            <MdLogout />
-          </li>
-          <li>
-            <div className="flex flex-col items-center justify-center">
-              <div className="flex space-x-5">
-                <img
-                  alt=""
-                  className="w-6 h-6 rounded-full ring-2 ring-offset-4 bg-gray-500 ring-violet-400 ring-offset-gray-800"
-                  src="https://source.unsplash.com/40x40/?portrait?1"
-                />
-              </div>
-            </div>
-          </li>
+
+          {user && user.uid ? (
+            <>
+              <li onClick={signoutHandler}>
+                <MdLogout />
+              </li>
+              <li>
+                <div className="flex flex-col items-center justify-center">
+                  <div className="flex space-x-5">
+                    <img
+                      alt=""
+                      className="w-6 h-6 rounded-full ring-2 ring-offset-4 bg-gray-500 ring-violet-400 ring-offset-gray-800"
+                      src={user?.photoURL}
+                    />
+                  </div>
+                </div>
+              </li>
+            </>
+          ) : (
+            <li>
+              <MdLogin />
+            </li>
+          )}
+
           <li>
             <label
               htmlFor="Toggle1"
@@ -190,10 +225,9 @@ const Navbar = () => {
                         Courses
                       </NavLink>
                     </li>
-
                     <li>
                       <NavLink
-                        to="/orders"
+                        to="/blog"
                         aria-label="About "
                         title="About "
                         className={({ isActive }) =>
@@ -203,6 +237,20 @@ const Navbar = () => {
                         }
                       >
                         Blog
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        to="/faq"
+                        aria-label="About "
+                        title="About "
+                        className={({ isActive }) =>
+                          isActive
+                            ? "font-medium tracking-wide text-blue-600 transition-colors duration-200 hover:text-teal-accent-400"
+                            : "font-medium tracking-wide text-dark transition-colors duration-200 hover:text-teal-accent-400"
+                        }
+                      >
+                        FAQ
                       </NavLink>
                     </li>
                   </ul>
