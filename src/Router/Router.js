@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../layouts/Main";
 import SignIn from "../Pages/Authentication/SignIn";
 import SignUp from "../Pages/Authentication/SignUp";
+import Checkout from "../Pages/Checkout/Checkout";
 import CourseDetails from "../Pages/CourseDetails/CourseDetails";
 import Courses from "../Pages/Courses/Courses";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
@@ -37,6 +38,12 @@ const router = createBrowserRouter([
       {
         path: "/courses/:id",
         element: <CourseDetails />,
+        loader: ({ params }) =>
+          fetch(`https://mastering-ai-server.vercel.app/courses/${params.id}`),
+      },
+      {
+        path: "/checkout/:id",
+        element: <Checkout />,
         loader: ({ params }) =>
           fetch(`https://mastering-ai-server.vercel.app/courses/${params.id}`),
       },
