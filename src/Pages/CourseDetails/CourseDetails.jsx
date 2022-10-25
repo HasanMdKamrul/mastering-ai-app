@@ -1,8 +1,13 @@
 import React, { useRef } from "react";
-import { MdDownload, MdPlayArrow } from "react-icons/md";
+import { FaBookOpen } from "react-icons/fa";
+import {
+  MdDownload,
+  MdOutlineHourglassEmpty,
+  MdPlayArrow,
+} from "react-icons/md";
+import { RiExchangeDollarFill } from "react-icons/ri";
 import { Link, useLoaderData } from "react-router-dom";
 import Pdf from "react-to-pdf";
-
 const CourseDetails = () => {
   const course = useLoaderData();
   const pdfRef = useRef();
@@ -41,6 +46,14 @@ const CourseDetails = () => {
               {title}
             </h5>
             <p className="mb-6 text-gray-900">{description}</p>
+            <div className="flex  text-blue-600 items-center ">
+              <MdOutlineHourglassEmpty className="w-6 h-6" />
+              <small className="mr-2">{duration} Hrs</small>
+              <RiExchangeDollarFill className="w-6 h-6" />
+              <small className="mr-2 ml-2">{price}</small>
+              <FaBookOpen className="w-6 h-6" />
+              <small className="ml-2">{category}</small>
+            </div>
             <hr className="mb-5 border-gray-300" />
             <div className="flex items-center space-x-4"></div>
             <div className="flex">
@@ -50,7 +63,7 @@ const CourseDetails = () => {
                   <MdPlayArrow />
                 </button>
               </Link>
-              <Pdf targetRef={pdfRef} filename="code-example.pdf">
+              <Pdf targetRef={pdfRef} filename="course_details.pdf">
                 {({ toPdf }) => (
                   <button onClick={toPdf}>
                     <MdDownload className="w-12 h-12" />
