@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import App from "./App";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
+import ThemeProvider from "./contexts/AuthProvider/ThemeProvider";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
@@ -11,8 +12,12 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <ToastContainer />
-      <App />
+      <ToastContainer position="top-center" />
+      <ThemeProvider>
+        <div className="dark:bg-slate-800 min-h-screen dark:text-white">
+          <App />
+        </div>
+      </ThemeProvider>
     </AuthProvider>
   </React.StrictMode>
 );
