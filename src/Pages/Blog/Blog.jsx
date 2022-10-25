@@ -3,17 +3,17 @@ import { useLoaderData } from "react-router-dom";
 
 const Blog = () => {
   const blogs = useLoaderData();
-  console.log(blogs);
+
   return (
-    <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+    <div className="px-4  py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div className="max-w-xl sm:mx-auto lg:max-w-2xl">
         <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
           <div>
-            <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
+            <p className="inline-block px-3 dark:text-gray-50 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
               Mastering Ai
             </p>
           </div>
-          <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+          <h2 className="max-w-lg mb-6 font-sans dark:text-gray-200 text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
             <span className="relative inline-block">
               <svg
                 viewBox="0 0 52 24"
@@ -37,11 +37,11 @@ const Blog = () => {
                   height="24"
                 />
               </svg>
-              <span className="relative">Simple</span>
+              <span className="relative dark:text-gray-200">Simple</span>
             </span>{" "}
             Web Tech Blogs
           </h2>
-          <p className="text-base text-gray-700 md:text-lg">
+          <p className="text-base dark:text-gray-400 text-gray-700 md:text-lg">
             The lower section of the blog will give you an insight about the
             most asked questions
           </p>
@@ -53,7 +53,9 @@ const Blog = () => {
             {blogs.slice(0, 2).map((blog) => (
               <div key={blog.id}>
                 <p className="mb-4 text-xl font-medium">{blog.question}</p>
-                <p className="text-gray-700">{blog.answer}</p>
+                <p className="text-gray-700 dark:text-gray-400">
+                  {blog.answer}
+                </p>
               </div>
             ))}
           </div>
@@ -61,7 +63,9 @@ const Blog = () => {
             {blogs.slice(2, 4).map((blog) => (
               <div key={blog.id}>
                 <p className="mb-4 text-xl font-medium">{blog.question}</p>
-                <p className="text-gray-700">{blog.answer}</p>
+                <p className="text-gray-700 dark:text-gray-400">
+                  {blog.answer}
+                </p>
               </div>
             ))}
           </div>

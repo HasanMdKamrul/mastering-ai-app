@@ -16,7 +16,7 @@ const CourseDetails = () => {
   return (
     <div>
       <div className="text-5xl font-extrabold text-center my-5 ">
-        <p className="text-primary"> Details Overview</p>
+        <p className="dark:text-gray-200 "> Details Overview</p>
       </div>
       <div
         ref={pdfRef}
@@ -30,7 +30,7 @@ const CourseDetails = () => {
               title="Logo"
               className="inline-block mb-5"
             >
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-50 hover:bg-indigo-200">
+              <div className="flex items-center justify-center w-12 h-12 dark:text-black rounded-full bg-indigo-50 hover:bg-indigo-200">
                 <Pdf targetRef={pdfRef} filename={`${title}`}>
                   {({ toPdf }) => (
                     <button onClick={toPdf}>
@@ -41,7 +41,7 @@ const CourseDetails = () => {
               </div>
             </Link>
             <div>
-              <h5 className="mb-4 text-4xl font-extrabold leading-none">
+              <h5 className="mb-4 dark:text-black text-4xl font-extrabold leading-none">
                 {title}
               </h5>
               <p className="mb-6 text-gray-900">{description}</p>

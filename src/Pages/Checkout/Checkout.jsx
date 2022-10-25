@@ -8,7 +8,7 @@ const Checkout = () => {
   const { image, title, duration, id } = course;
 
   return (
-    <div className="bg-gray-200 mx-auto rounded-2xl flex justify-center items-center mt-12 shadow-lg container">
+    <div className="bg-gray-200 text-black mx-auto rounded-2xl flex justify-center items-center mt-12 shadow-lg container">
       <section className="my-8 ">
         <div className="container flex flex-col items-center p-4 mx-auto space-y-6 md:p-8">
           <svg
