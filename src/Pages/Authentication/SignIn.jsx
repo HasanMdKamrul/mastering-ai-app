@@ -24,6 +24,8 @@ const SignIn = () => {
         navigate(from, { replace: true });
       } catch (error) {
         toast.error(error.message);
+      } finally {
+        setLoading(false);
       }
     };
     loginGoogle();
@@ -41,6 +43,8 @@ const SignIn = () => {
         navigate(from, { replace: true });
       } catch (error) {
         toast.error(error.message);
+      } finally {
+        setLoading(false);
       }
     };
     loginGithub();
@@ -67,7 +71,6 @@ const SignIn = () => {
       } catch (error) {
         toast.error(error.message);
       } finally {
-        console.log("finally");
         setLoading(false);
       }
     };

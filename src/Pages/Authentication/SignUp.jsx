@@ -17,7 +17,8 @@ const SignUp = () => {
   const from = location?.state?.from?.pathname || "/";
 
   // ** AuthContext
-  const { createUser, socialSignIn, profileUpdater } = useContext(AuthContext);
+  const { createUser, socialSignIn, profileUpdater, setLoading } =
+    useContext(AuthContext);
   // ** event handlers
   const emailHandler = (event) => {
     const emailOutput = event.target.value;
@@ -90,6 +91,8 @@ const SignUp = () => {
           position: "top-right",
           autoClose: 500,
         });
+      } finally {
+        setLoading(false);
       }
     };
     emailPassUser();
@@ -105,6 +108,8 @@ const SignUp = () => {
         navigate(from, { replace: true });
       } catch (error) {
         toast.error(error.message);
+      } finally {
+        setLoading(false);
       }
     };
     loginGoogle();
@@ -122,6 +127,8 @@ const SignUp = () => {
         navigate(from, { replace: true });
       } catch (error) {
         toast.error(error.message);
+      } finally {
+        setLoading(false);
       }
     };
     loginGithub();
