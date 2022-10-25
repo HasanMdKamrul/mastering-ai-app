@@ -14,9 +14,7 @@ root.render(
     <AuthProvider>
       <ToastContainer position="top-center" />
       <ThemeProvider>
-        <div className="dark:bg-slate-800 min-h-screen dark:text-white">
-          <App />
-        </div>
+        <App />
       </ThemeProvider>
     </AuthProvider>
   </React.StrictMode>

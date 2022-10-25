@@ -17,15 +17,15 @@ const Home = () => {
               <div>
                 <div className="flex">
                   <MdPlayArrow />
-                  <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
+                  <p className="inline-block px-3 py-px mb-4 dark:text-gray-200 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
                     Mastering Ai
                   </p>
                 </div>
               </div>
-              <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+              <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight dark:text-gray-200 text-gray-900 sm:text-4xl sm:leading-none">
                 <Typewriter loop words={["Mastering Ai with professonals "]} />
               </h2>
-              <p className="text-base text-gray-700 md:text-lg">
+              <p className="text-base text-gray-700 dark:text-gray-400 md:text-lg">
                 This web application contains courses related to the modern
                 technologies related to the Ai,Ml and deep learning. We offer a
                 wide range of courses to master this technologies and full

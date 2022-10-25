@@ -26,7 +26,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8  border-b-2 border-b-slate-900">
+    <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8  border-b-2 dark:border-b-gray-50 border-b-slate-900">
       <div className="relative flex items-center justify-between">
         <Link
           to="/"
@@ -34,7 +34,7 @@ const Navbar = () => {
           title="Mastering-ai"
           className="inline-flex items-center"
         >
-          <img className="w-6 h-6" src={logo} alt="" />
+          <img className="w-6 h-6  bg-gray-50 rounded-2xl" src={logo} alt="" />
           <span className="ml-2 text-xl font-bold tracking-wide text-dark uppercase">
             Mastering-Ai
           </span>

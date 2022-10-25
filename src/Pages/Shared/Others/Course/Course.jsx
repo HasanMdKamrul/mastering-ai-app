@@ -7,7 +7,7 @@ const Course = ({ course }) => {
 
   return (
     <Link to={`/courses/${id}`}>
-      <div className="overflow-hidden transition-shadow duration-300 bg-gray-200 shadow-xl hover:bg-gray-300 hover:shadow-2xl p-3 rounded-2xl ">
+      <div className="overflow-hidden transition-shadow duration-300 bg-gray-200  dark:text-slate-900 shadow-xl hover:bg-gray-300 hover:shadow-2xl p-3 rounded-2xl ">
         <img src={image} className="object-cover w-full h-64 rounded" alt="" />
 
         <div className="py-5">
