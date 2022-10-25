@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { MdLogin, MdLogout } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
+import ReactTooltip from "react-tooltip";
 import logo from "../../../assets/Images/Logo/icons8-artificial-intelligence-100.png";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
@@ -73,8 +74,8 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/blog"
-              aria-label="About "
-              title="About "
+              aria-label="blog "
+              title="blog "
               className={({ isActive }) =>
                 isActive
                   ? "font-medium tracking-wide text-blue-600 transition-colors duration-200 hover:text-teal-accent-400"
@@ -107,9 +108,14 @@ const Navbar = () => {
               <li>
                 <div className="flex flex-col items-center justify-center">
                   <div className="flex space-x-5">
+                    <ReactTooltip id="registerTip" place="top" effect="solid">
+                      {user?.displayName}
+                    </ReactTooltip>
                     <img
+                      data-tip
+                      data-for="registerTip"
                       alt=""
-                      className="w-6 h-6 rounded-full ring-2 ring-offset-4 bg-gray-500 ring-violet-400 ring-offset-gray-800"
+                      className="w-6 h-6 tooltip rounded-full ring-2 ring-offset-4 bg-gray-500 ring-violet-400 ring-offset-gray-800"
                       src={user?.photoURL}
                     />
                   </div>
