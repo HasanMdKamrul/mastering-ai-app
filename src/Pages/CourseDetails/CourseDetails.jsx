@@ -30,7 +30,7 @@ const CourseDetails = () => {
               title="Logo"
               className="inline-block mb-5"
             >
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-50">
+              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-50 hover:bg-indigo-200">
                 <Pdf targetRef={pdfRef} filename={`${title}`}>
                   {({ toPdf }) => (
                     <button onClick={toPdf}>

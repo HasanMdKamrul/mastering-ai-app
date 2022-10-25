@@ -24,7 +24,7 @@ const Courses = () => {
         <h2 className="text-sm font-semibold tracking-widest uppercase">
           Course Outline
         </h2>
-        <ul className="menu  overflow-y-auto w-full bg-blue-100 shadow text-gray-900">
+        <ul className="menu  overflow-y-auto w-full bg-gray-200 shadow text-slate-900">
           {courses.map((course) => (
             <CourseSideBar key={course.id} course={course} />
           ))}

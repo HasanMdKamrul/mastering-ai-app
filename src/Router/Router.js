@@ -7,6 +7,7 @@ import Checkout from "../Pages/Checkout/Checkout";
 import CourseDetails from "../Pages/CourseDetails/CourseDetails";
 import Courses from "../Pages/Courses/Courses";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Faq from "../Pages/Faq/Faq";
 import Home from "../Pages/Home/Home";
 import PrivateRoute from "./PrivateRoute";
 
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/signin",
         element: <SignIn />,
+      },
+      {
+        path: "/faq",
+        element: <Faq />,
       },
       {
         path: "/blog",
