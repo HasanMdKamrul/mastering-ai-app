@@ -59,21 +59,18 @@ const useFirebase = () => {
   //   ** update profile
 
   const profileUpdater = (profileInfo) => {
-    setLoading(true);
     return updateProfile(auth.currentUser, profileInfo);
   };
 
   // ** verification email
 
   const verifyEmail = () => {
-    setLoading(true);
     return sendEmailVerification(auth.currentUser);
   };
 
   //   ** forget password
 
   const passwordReset = (email) => {
-    setLoading(true);
     return sendPasswordResetEmail(auth, email);
   };
 

@@ -124,7 +124,9 @@ const Navbar = () => {
             </>
           ) : (
             <li>
-              <MdLogin />
+              <Link to="/signin">
+                <MdLogin />
+              </Link>
             </li>
           )}
 

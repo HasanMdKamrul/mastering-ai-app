@@ -3,9 +3,9 @@ import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider/AuthProvider";
 
 const PrivateRoute = ({ children }) => {
-  const { loading, user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const location = useLocation();
-
+  console.log(loading);
   if (loading) {
     return (
       <div className="flex justify-center items-center my-24">
@@ -14,11 +14,10 @@ const PrivateRoute = ({ children }) => {
     );
   }
 
-  if (user) {
+  if (user && user.uid) {
     return children;
   }
-
-  return <Navigate to="/signin" replace state={{ from: location }} />;
+  return <Navigate to="/signin" state={{ from: location }} replace />;
 };
 
 export default PrivateRoute;
