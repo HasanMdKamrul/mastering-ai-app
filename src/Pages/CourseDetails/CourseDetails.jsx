@@ -8,6 +8,7 @@ import {
 import { RiExchangeDollarFill } from "react-icons/ri";
 import { Link, useLoaderData } from "react-router-dom";
 import Pdf from "react-to-pdf";
+
 const CourseDetails = () => {
   const course = useLoaderData();
   const pdfRef = useRef();
@@ -26,19 +27,13 @@ const CourseDetails = () => {
             className="inline-block mb-5"
           >
             <div className="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-50">
-              <svg
-                className="w-10 h-10 text-deep-purple-accent-400"
-                stroke="currentColor"
-                viewBox="0 0 52 52"
-              >
-                <polygon
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  fill="none"
-                  points="29 13 14 29 25 29 23 39 38 23 27 23"
-                />
-              </svg>
+              <Pdf targetRef={pdfRef} filename={`${title}`}>
+                {({ toPdf }) => (
+                  <button onClick={toPdf}>
+                    <MdDownload className="w-12 h-12" />
+                  </button>
+                )}
+              </Pdf>
             </div>
           </Link>
           <div>
@@ -63,13 +58,6 @@ const CourseDetails = () => {
                   <MdPlayArrow />
                 </button>
               </Link>
-              <Pdf targetRef={pdfRef} filename="course_details.pdf">
-                {({ toPdf }) => (
-                  <button onClick={toPdf}>
-                    <MdDownload className="w-12 h-12" />
-                  </button>
-                )}
-              </Pdf>
             </div>
           </div>
         </div>
