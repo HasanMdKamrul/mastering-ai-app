@@ -22,7 +22,7 @@ const Home = () => {
                   </p>
                 </div>
               </div>
-              <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight dark:text-gray-200 text-gray-900 sm:text-4xl sm:leading-none">
+              <h2 className="max-w-lg mb-6 h-12 font-sans text-3xl font-bold tracking-tight dark:text-gray-200 text-gray-900 sm:text-4xl sm:leading-none">
                 <Typewriter loop words={["Mastering Ai with professonals "]} />
               </h2>
               <p className="text-base text-gray-700 dark:text-gray-400 md:text-lg">

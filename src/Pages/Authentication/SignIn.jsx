@@ -5,7 +5,8 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const SignIn = () => {
-  const { userLogin, socialSignIn, passwordReset } = useContext(AuthContext);
+  const { userLogin, socialSignIn, passwordReset, setLoading } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const [email, setEmail] = useState("");
@@ -65,6 +66,9 @@ const SignIn = () => {
         navigate(from, { replace: true });
       } catch (error) {
         toast.error(error.message);
+      } finally {
+        console.log("finally");
+        setLoading(false);
       }
     };
     emailPassLogIn();

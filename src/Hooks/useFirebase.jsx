@@ -78,6 +78,7 @@ const useFirebase = () => {
     createUser,
     userLogin,
     loading,
+    setLoading,
     user,
     socialSignIn,
     logOut,
