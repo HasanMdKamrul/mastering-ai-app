@@ -24,6 +24,8 @@
 ## What is used to build this web-site (Technologies)?
 
 - React
+- Firebase
+- Firebase Hosting
 - Html 5
 - CSS 3
 - React-router-dom
