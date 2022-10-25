@@ -1,11 +1,13 @@
 import Lottie from "lottie-react";
-import React from "react";
+import React, { useContext } from "react";
 import { MdOutlineAppRegistration, MdPlayArrow } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import AiAnimation from "../../assets/Animations/HomeAnimation.json";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Home = () => {
+  const { user } = useContext(AuthContext);
   return (
     <div>
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
@@ -77,13 +79,15 @@ const Home = () => {
                   />
                 </svg>
               </Link>
-              <Link
-                to="/signup"
-                className="inline-flex items-center justify-center w-full h-12 px-6 mb-3 font-medium tracking-wide text-black transition duration-200 rounded shadow-md md:w-auto md:mr-4 md:mb-0 bg-sky-400 hover:bg-blue-500 focus:shadow-outline focus:outline-none"
-              >
-                <span className="mr-3">Sign Up</span>
-                <MdOutlineAppRegistration />
-              </Link>
+              {!(user && user.uid) && (
+                <Link
+                  to="/signup"
+                  className="inline-flex items-center justify-center w-full h-12 px-6 mb-3 font-medium tracking-wide text-black transition duration-200 rounded shadow-md md:w-auto md:mr-4 md:mb-0 bg-sky-400 hover:bg-blue-500 focus:shadow-outline focus:outline-none"
+                >
+                  <span className="mr-3">Sign Up</span>
+                  <MdOutlineAppRegistration />
+                </Link>
+              )}
             </div>
           </div>
           <div className=" lg:w-1/2 hidden lg:block ">

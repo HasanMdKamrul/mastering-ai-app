@@ -1,7 +1,7 @@
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { MdClose } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
@@ -10,6 +10,11 @@ const SignUp = () => {
   const [error, setError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const location = useLocation();
+
+  const from = location?.state?.from?.pathname || "/";
 
   // ** AuthContext
   const { createUser, socialSignIn, profileUpdater } = useContext(AuthContext);
@@ -74,6 +79,7 @@ const SignUp = () => {
         profileUpdater(profileInfo)
           .then(() => console.log("profile updated"))
           .catch((error) => toast.error(error.message));
+        navigate(from, { replace: true });
         form.reset();
         toast.success("User logged in", {
           position: "top-center",
@@ -96,6 +102,7 @@ const SignUp = () => {
       try {
         await socialSignIn(googleProvider);
         toast.success("User logged in");
+        navigate(from, { replace: true });
       } catch (error) {
         toast.error(error.message);
       }
@@ -112,6 +119,7 @@ const SignUp = () => {
       try {
         await socialSignIn(githubProvider);
         toast.success("User logged in");
+        navigate(from, { replace: true });
       } catch (error) {
         toast.error(error.message);
       }
