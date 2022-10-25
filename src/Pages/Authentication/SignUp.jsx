@@ -64,7 +64,7 @@ const SignUp = () => {
     };
 
     if (!(password === confirm)) {
-      toast.error(`Password didn't match`);
+      toast.error(`Password didn't match or wrong password`);
       return;
     }
 
