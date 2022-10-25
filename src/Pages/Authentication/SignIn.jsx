@@ -1,13 +1,14 @@
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const SignIn = () => {
-  const { userLogin, socialSignIn } = useContext(AuthContext);
+  const { userLogin, socialSignIn, passwordReset } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const [email, setEmail] = useState("");
 
   const from = location.state?.from?.pathname || "/";
 
@@ -69,6 +70,36 @@ const SignIn = () => {
     emailPassLogIn();
   };
 
+  // ** handleEmail
+
+  const handleEmail = (event) => {
+    const emailOutput = event.target.value;
+
+    if (/^\S+@\S+\.\S+$/.test(emailOutput)) {
+      setEmail(emailOutput);
+    } else {
+      toast.error("Please provide a valid email");
+    }
+  };
+
+  // ** passwordResetHandler
+
+  const passwordResetHandler = (event) => {
+    if (email) {
+      const resetPass = async () => {
+        try {
+          await passwordReset(email);
+          toast.success(`Password reset email has been sent to ${email}`);
+        } catch (error) {
+          toast.error(error.message);
+        }
+      };
+      resetPass();
+    } else {
+      toast.error("Please provide an email in the email field");
+    }
+  };
+
   return (
     <div className="flex justify-center items-center pt-40">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
@@ -90,6 +121,7 @@ const SignIn = () => {
                 Email address
               </label>
               <input
+                onBlur={handleEmail}
                 type="email"
                 name="email"
                 id="email"
@@ -124,7 +156,10 @@ const SignIn = () => {
           </div>
         </form>
         <div className="space-y-1">
-          <button className="text-xs hover:underline text-gray-400">
+          <button
+            onClick={passwordResetHandler}
+            className="text-xs hover:underline text-gray-400"
+          >
             Forgot password?
           </button>
         </div>

@@ -36,6 +36,7 @@ const router = createBrowserRouter([
       {
         path: "/faq",
         element: <Faq />,
+        loader: () => fetch(`https://mastering-ai-server.vercel.app/faq`),
       },
       {
         path: "/blog",
