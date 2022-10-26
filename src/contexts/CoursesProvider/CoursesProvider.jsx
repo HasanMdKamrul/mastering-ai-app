@@ -6,7 +6,7 @@ const CoursesProvider = ({ children }) => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    const unsubscribe = async () => {
+    const loadData = async () => {
       try {
         const response = await fetch(
           `https://mastering-ai-server.vercel.app/courses`
@@ -18,7 +18,7 @@ const CoursesProvider = ({ children }) => {
         console.log(error.message);
       }
     };
-    return () => unsubscribe();
+    loadData();
   }, []);
 
   return (

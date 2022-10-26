@@ -63,14 +63,6 @@ const Courses = () => {
         </div>
       </div>
       <div className="lg:col-start-9 lg:col-end-12 mt-28">
-        <h2 className="text-sm font-semibold tracking-widest uppercase">
-          Course Outline
-        </h2>
-        <ul className="menu  overflow-y-auto w-full bg-gray-200 shadow text-slate-900">
-          {topicCategory.map((course) => (
-            <CourseSideBar key={course.id} course={course} />
-          ))}
-        </ul>
         <div>
           <h2 className="text-sm font-semibold tracking-widest uppercase">
             Course Categories
@@ -99,6 +91,14 @@ const Courses = () => {
             </button>
           </div>
         </div>
+        <h2 className="text-sm font-semibold tracking-widest uppercase">
+          Course Outline
+        </h2>
+        <ul className="menu  overflow-y-auto w-full bg-gray-200 shadow text-slate-900">
+          {topicCategory.map((course) => (
+            <CourseSideBar key={course.id} course={course} />
+          ))}
+        </ul>
       </div>
     </div>
   );
