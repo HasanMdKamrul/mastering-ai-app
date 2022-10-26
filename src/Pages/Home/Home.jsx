@@ -1,6 +1,10 @@
 import Lottie from "lottie-react";
 import React, { useContext } from "react";
-import { MdOutlineAppRegistration, MdPlayArrow } from "react-icons/md";
+import {
+  MdLocationOn,
+  MdOutlineAppRegistration,
+  MdPlayArrow,
+} from "react-icons/md";
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import AiAnimation from "../../assets/Animations/HomeAnimation.json";
@@ -88,6 +92,13 @@ const Home = () => {
                   <MdOutlineAppRegistration />
                 </Link>
               )}
+              <Link
+                to="/find"
+                className="inline-flex items-center justify-center w-full h-12 px-6 mb-3 font-medium tracking-wide text-black transition duration-200 rounded shadow-md md:w-auto md:mr-4 md:mb-0 bg-sky-400 hover:bg-blue-500 focus:shadow-outline focus:outline-none"
+              >
+                <span className="mr-3">Find</span>
+                <MdLocationOn />
+              </Link>
             </div>
           </div>
           <div className=" lg:w-1/2  lg:block ">

@@ -8,6 +8,7 @@ import CourseDetails from "../Pages/CourseDetails/CourseDetails";
 import Courses from "../Pages/Courses/Courses";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Faq from "../Pages/Faq/Faq";
+import Find from "../Pages/Find/Find";
 import Home from "../Pages/Home/Home";
 import Profile from "../Pages/Profile/Profile";
 import PrivateRoute from "./PrivateRoute";
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        path: "/find",
+        element: <Find />,
       },
       {
         path: "/faq",
