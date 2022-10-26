@@ -9,9 +9,14 @@ import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import AiAnimation from "../../assets/Animations/HomeAnimation.json";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import { CoursesContext } from "../../contexts/CoursesProvider/CoursesProvider";
+import Instructors from "../Shared/Others/Instructors/Instructors";
 
 const Home = () => {
   const { user } = useContext(AuthContext);
+  // ** Instructor info
+  const courses = useContext(CoursesContext);
+
   return (
     <div>
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
@@ -105,6 +110,24 @@ const Home = () => {
             <Lottie animationData={AiAnimation} />
           </div>
         </div>
+      </div>
+      <div>
+        {/* ** slider  */}
+        <section className="py-6 dark:bg-gray-800 dark:text-gray-100 ">
+          <div className="container flex flex-col items-center justify-center mx-auto ">
+            <p className="p-2 text-sm font-medium tracking-wider text-center uppercase">
+              Instructor team
+            </p>
+            <h1 className="text-4xl font-bold leading-none text-center sm:text-5xl">
+              The talented people behind the scenes
+            </h1>
+            <div className="flex flex-row flex-wrap-reverse justify-center mt-8">
+              {courses.map((course) => (
+                <Instructors key={course?.id} course={course} />
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
