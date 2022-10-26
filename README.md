@@ -1,4 +1,4 @@
-## Project Name
+## Project Name or Website Name
 
 # MASTERING-AI
 

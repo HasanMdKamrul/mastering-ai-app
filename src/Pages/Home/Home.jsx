@@ -129,7 +129,7 @@ const Home = () => {
           </div>
         </section>
         {/* ** reviews */}
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center ">
           <div className="flex flex-col max-w-xl p-8 shadow-sm w-full rounded-xl lg:p-12 bg-gray-900 text-gray-100">
             <div className="flex flex-col w-full">
               <h2 className="text-3xl font-semibold text-center">
