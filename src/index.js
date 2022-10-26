@@ -4,7 +4,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import App from "./App";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
-import ThemeProvider from "./contexts/AuthProvider/ThemeProvider";
+import CoursesProvider from "./contexts/CoursesProvider/CoursesProvider";
+import ThemeProvider from "./contexts/ThemeProvider/ThemeProvider";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
@@ -14,7 +15,9 @@ root.render(
     <AuthProvider>
       <ToastContainer position="top-center" />
       <ThemeProvider>
-        <App />
+        <CoursesProvider>
+          <App />
+        </CoursesProvider>
       </ThemeProvider>
     </AuthProvider>
   </React.StrictMode>

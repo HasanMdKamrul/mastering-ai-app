@@ -1,10 +1,10 @@
-import React from "react";
-import { useLoaderData } from "react-router-dom";
+import React, { useContext } from "react";
+import { CoursesContext } from "../../contexts/CoursesProvider/CoursesProvider";
 import Course from "../Shared/Others/Course/Course";
 import CourseSideBar from "../Shared/Others/CourseSideBar/CourseSideBar";
 
 const Courses = () => {
-  const courses = useLoaderData();
+  const courses = useContext(CoursesContext);
 
   return (
     <div className="grid lg:grid-cols-12 mx-auto container ">

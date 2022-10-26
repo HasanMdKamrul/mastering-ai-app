@@ -110,7 +110,7 @@ const Profile = () => {
         </div>
       </div>
       <div className="lg:col-start-7 lg:col-end-12">
-        <div className="max-w-md p-8 sm:flex sm:space-x-6 dark:bg-gray-900 dark:text-gray-100">
+        <div className="max-w-md p-8 mt-12 rounded-2xl shadow-2xl sm:flex sm:space-x-6 dark:bg-gray-700 dark:text-gray-100">
           <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0">
             <img
               src={user?.photoURL}
@@ -118,7 +118,7 @@ const Profile = () => {
               className="object-cover object-center w-full h-full rounded dark:bg-gray-500"
             />
           </div>
-          <div className="flex flex-col space-y-4">
+          <div className="flex flex-col space-y-4 ">
             <div>
               <h2 className="text-2xl font-semibold">{user?.displayName}</h2>
               <span className="text-sm dark:text-gray-400">
