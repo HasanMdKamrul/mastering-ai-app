@@ -7,7 +7,7 @@ const Courses = () => {
   const courses = useLoaderData();
 
   return (
-    <div className="grid lg:grid-cols-12 ">
+    <div className="grid lg:grid-cols-12 mx-auto container ">
       <div className="lg:col-start-1 lg:col-end-9 ">
         <div className="text-5xl font-extrabold text-center mt-5 ">
           <p className="text-slate-900 dark:text-slate-200 ">Our Courses</p>

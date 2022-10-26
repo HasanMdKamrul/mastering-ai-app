@@ -14,7 +14,7 @@ const CourseDetails = () => {
   const pdfRef = useRef();
   const { title, price, description, category, image, duration, id } = course;
   return (
-    <div>
+    <div className="mx-auto container">
       <div className="text-5xl font-extrabold text-center my-5 ">
         <p className="dark:text-gray-200 "> Details Overview</p>
       </div>

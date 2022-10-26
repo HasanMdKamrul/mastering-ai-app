@@ -5,13 +5,11 @@ import { toast } from "react-toastify";
 import ReactTooltip from "react-tooltip";
 import logo from "../../../assets/Images/Logo/icons8-artificial-intelligence-100.png";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
-import { ThemeContext } from "../../../contexts/AuthProvider/ThemeProvider";
 import ToggleButton from "../Others/ToggleButton/ToggleButton";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
-  const { theme, setTheme } = useContext(ThemeContext);
 
   const signoutHandler = () => {
     const userSignOut = async () => {
@@ -106,16 +104,19 @@ const Navbar = () => {
               <li>
                 <div className="flex flex-col items-center justify-center">
                   <div className="flex space-x-5">
+                    {" "}
                     <ReactTooltip id="registerTip" place="top" effect="solid">
                       {user?.displayName}
                     </ReactTooltip>
-                    <img
-                      data-tip
-                      data-for="registerTip"
-                      alt=""
-                      className="w-6 h-6 tooltip rounded-full ring-2 ring-offset-4 bg-gray-500 ring-violet-400 ring-offset-gray-800"
-                      src={user?.photoURL}
-                    />
+                    <Link to="/profile">
+                      <img
+                        data-tip
+                        data-for="registerTip"
+                        alt=""
+                        className="w-6 h-6 tooltip rounded-full ring-2 ring-offset-4 bg-gray-500 ring-violet-400 ring-offset-gray-800"
+                        src={user?.photoURL}
+                      />
+                    </Link>
                   </div>
                 </div>
               </li>

@@ -78,7 +78,10 @@ const SignUp = () => {
         const result = await createUser(email, password);
         console.log(result.user);
         profileUpdater(profileInfo)
-          .then(() => console.log("profile updated"))
+          .then(() => {
+            console.log("profile updated");
+            setLoading(false);
+          })
           .catch((error) => toast.error(error.message));
         navigate(from, { replace: true });
         form.reset();
@@ -135,7 +138,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex justify-center items-center pt-8">
+    <div className="flex justify-center items-center  p-8">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Sign Up</h1>

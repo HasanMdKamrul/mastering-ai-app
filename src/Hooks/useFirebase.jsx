@@ -59,6 +59,7 @@ const useFirebase = () => {
   //   ** update profile
 
   const profileUpdater = (profileInfo) => {
+    setLoading(true);
     return updateProfile(auth.currentUser, profileInfo);
   };
 
