@@ -7,7 +7,7 @@ import {
 } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
-import AiAnimation from "../../assets/Animations/HomeAnimation.json";
+import AiAnimation from "../../assets/Animations/AiAnimation.json";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import { CoursesContext } from "../../contexts/CoursesProvider/CoursesProvider";
 import Instructors from "../Shared/Others/Instructors/Instructors";

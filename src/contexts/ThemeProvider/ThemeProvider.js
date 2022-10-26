@@ -33,7 +33,7 @@ const ThemeProvider = ({ children }) => {
     root.classList.remove(isDark ? "light" : "dark");
     root.classList.add(existing);
 
-    localStorage.setItem("current-theme", existing);
+    localStorage.setItem("theme", existing);
   };
 
   if (theme) {

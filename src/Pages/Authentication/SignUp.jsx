@@ -1,5 +1,6 @@
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -10,6 +11,7 @@ const SignUp = () => {
   const [error, setError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const location = useLocation();
@@ -137,6 +139,10 @@ const SignUp = () => {
     loginGithub();
   };
 
+  const passwordShowHandler = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="flex justify-center items-center  p-8">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
@@ -219,14 +225,38 @@ const SignUp = () => {
                   <span>*</span>
                 </label>
               </div>
-              <input
-                onChange={handlePassword}
-                type="password"
-                name="password"
-                id="password"
-                placeholder="*******"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900"
-              />
+              <div className="flex  items-center">
+                {showPassword ? (
+                  <input
+                    onChange={handlePassword}
+                    type="text"
+                    name="password"
+                    id="password"
+                    placeholder="*******"
+                    className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900"
+                  />
+                ) : (
+                  <input
+                    onChange={handlePassword}
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="*******"
+                    className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900"
+                  />
+                )}
+                {showPassword ? (
+                  <FaEyeSlash
+                    onClick={passwordShowHandler}
+                    style={{ marginLeft: "-30px" }}
+                  />
+                ) : (
+                  <FaEye
+                    onClick={passwordShowHandler}
+                    style={{ marginLeft: "-30px" }}
+                  />
+                )}
+              </div>
               {passwordError && (
                 <small className="flex items-center text-red-600">
                   <MdClose />
