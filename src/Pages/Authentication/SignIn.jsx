@@ -1,5 +1,6 @@
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
@@ -10,6 +11,7 @@ const SignIn = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [email, setEmail] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const from = location.state?.from?.pathname || "/";
 
@@ -107,6 +109,10 @@ const SignIn = () => {
     }
   };
 
+  const passwordShowHandler = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="flex justify-center items-center pt-40">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-200  text-gray-900">
@@ -138,18 +144,36 @@ const SignIn = () => {
               />
             </div>
             <div>
-              <div className="flex justify-between">
-                <label htmlFor="password" className="text-sm mb-2">
-                  Password
-                </label>
+              <div className="flex  items-center">
+                {showPassword ? (
+                  <input
+                    type="text"
+                    name="password"
+                    id="password"
+                    placeholder="*******"
+                    className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900"
+                  />
+                ) : (
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="*******"
+                    className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900"
+                  />
+                )}
+                {showPassword ? (
+                  <FaEyeSlash
+                    onClick={passwordShowHandler}
+                    style={{ marginLeft: "-30px" }}
+                  />
+                ) : (
+                  <FaEye
+                    onClick={passwordShowHandler}
+                    style={{ marginLeft: "-30px" }}
+                  />
+                )}
               </div>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="*******"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900"
-              />
             </div>
           </div>
 
