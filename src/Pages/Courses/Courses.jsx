@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { CoursesContext } from "../../contexts/CoursesProvider/CoursesProvider";
 import Course from "../Shared/Others/Course/Course";
@@ -10,15 +10,27 @@ const Courses = () => {
   const [topicCategory, setTopicCategory] = useState(courses);
 
   const handleTopic = (topic) => {
-    const filteredTopics = courses.filter((t) => {
-      console.log(t.category.toLowerCase());
-      console.log(topic.toLowerCase());
-      return t.category.toLowerCase() === topic.toLowerCase();
-    });
-
+    const filteredTopics = courses.filter(
+      (t) => t.category.toLowerCase() === topic.toLowerCase()
+    );
     setTopicCategory(filteredTopics);
-    // setTopicCategory(filteredTopics);
   };
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const response = await fetch(
+          `https://mastering-ai-server.vercel.app/courses`
+        );
+        response.ok ? console.log("Successfull") : console.log("failed");
+        const data = await response.json();
+        setTopicCategory(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    loadData();
+  }, []);
 
   const allHandler = () => {
     const loadData = async () => {
@@ -55,7 +67,7 @@ const Courses = () => {
           Course Outline
         </h2>
         <ul className="menu  overflow-y-auto w-full bg-gray-200 shadow text-slate-900">
-          {courses.map((course) => (
+          {topicCategory.map((course) => (
             <CourseSideBar key={course.id} course={course} />
           ))}
         </ul>
