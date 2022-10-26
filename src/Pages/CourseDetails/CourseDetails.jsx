@@ -12,7 +12,6 @@ import CourseStep from "../Shared/Others/CourseStep/CourseStep";
 
 const CourseDetails = () => {
   const course = useLoaderData();
-  console.log(course);
   const pdfRef = useRef();
   const {
     title,

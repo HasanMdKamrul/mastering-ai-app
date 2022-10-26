@@ -56,6 +56,7 @@ const router = createBrowserRouter([
       {
         path: "/courses",
         element: <Courses />,
+        loader: () => fetch(`https://mastering-ai-server.vercel.app/topics`),
       },
       {
         path: "/courses/:id",
