@@ -12,7 +12,8 @@
 - The interactive navbar consists of few routes including a login, logout icon which toggles based on user interactivity. Besides the profile photo with the link as an avatar appears when the user logged in.
 - In the profile page you can edit the profile information such as profile picture and the name.
 - In the first page of the UI, you'll find two buttons if you're not signuped or logged in.
-  -One of them is Buy courses -> which will navigate you to the courses page.Another button is the sign up button, which you can use if you're new to the platform.
+- One of them is Buy courses -> which will navigate you to the courses page.Another button is the sign up button, which you can use if you're new to the platform.
+- At the home component I have dynamically shown information about the instructors
 
 - On the courses page you'll find several courses card at the left and course outline at the right nav.
 - By clicking those you can go to the course details page .
@@ -26,6 +27,8 @@
 - I have also included a find button, which will redirect you to the find route where you will find a map to get to us and a mailing platform to talk to us.
 - React lazy load and suspance implemented to give the user a better exprerience which the big chunk of data load from the api.
 - You can find the courses according to their categories in the courses page.
+- In the password section you'll get an eye icon to show or hide your password by clicking.
+- You can reset your password as well if you forgot
 
 ## What is used to build this web-site (Technologies)?
 
