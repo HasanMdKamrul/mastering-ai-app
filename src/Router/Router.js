@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layouts/Main";
 import SignIn from "../Pages/Authentication/SignIn";
@@ -5,13 +6,13 @@ import SignUp from "../Pages/Authentication/SignUp";
 import Blog from "../Pages/Blog/Blog";
 import Checkout from "../Pages/Checkout/Checkout";
 import CourseDetails from "../Pages/CourseDetails/CourseDetails";
-import Courses from "../Pages/Courses/Courses";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Faq from "../Pages/Faq/Faq";
-import Find from "../Pages/Find/Find";
-import Home from "../Pages/Home/Home";
 import Profile from "../Pages/Profile/Profile";
 import PrivateRoute from "./PrivateRoute";
+const Home = lazy(() => import("../Pages/Home/Home"));
+const Courses = lazy(() => import("../Pages/Courses/Courses"));
+const Find = lazy(() => import("../Pages/Find/Find"));
 
 const router = createBrowserRouter([
   {
@@ -21,11 +22,31 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: (
+          <Suspense
+            fallback={
+              <div className="flex justify-center items-center min-h-screen">
+                <div className="w-24 h-24 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+              </div>
+            }
+          >
+            <Home />
+          </Suspense>
+        ),
       },
       {
         path: "/home",
-        element: <Home />,
+        element: (
+          <Suspense
+            fallback={
+              <div className="flex justify-center items-center min-h-screen">
+                <div className="w-24 h-24 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+              </div>
+            }
+          >
+            <Home />
+          </Suspense>
+        ),
       },
       {
         path: "/signup",
@@ -41,7 +62,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/find",
-        element: <Find />,
+        element: (
+          <Suspense
+            fallback={
+              <div className="flex justify-center items-center min-h-screen">
+                <div className="w-24 h-24 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+              </div>
+            }
+          >
+            <Find />
+          </Suspense>
+        ),
       },
       {
         path: "/faq",
@@ -55,7 +86,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/courses",
-        element: <Courses />,
+        element: (
+          <Suspense
+            fallback={
+              <div className="flex justify-center items-center min-h-screen">
+                <div className="w-24 h-24 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+              </div>
+            }
+          >
+            <Courses />
+          </Suspense>
+        ),
         loader: () => fetch(`https://mastering-ai-server.vercel.app/topics`),
       },
       {
