@@ -104,10 +104,15 @@ const Navbar = () => {
               <li>
                 <div className="flex flex-col items-center justify-center">
                   <div className="flex space-x-5">
-                    {" "}
-                    <ReactTooltip id="registerTip" place="top" effect="solid">
-                      {user?.displayName}
-                    </ReactTooltip>
+                    {user?.displayName ? (
+                      <ReactTooltip id="registerTip" place="top" effect="solid">
+                        {user?.displayName}
+                      </ReactTooltip>
+                    ) : (
+                      <ReactTooltip id="registerTip" place="top" effect="solid">
+                        "N/A"
+                      </ReactTooltip>
+                    )}
                     <Link to="/profile">
                       <img
                         data-tip
