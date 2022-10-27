@@ -9,6 +9,7 @@ import CourseDetails from "../Pages/CourseDetails/CourseDetails";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Faq from "../Pages/Faq/Faq";
 import Profile from "../Pages/Profile/Profile";
+import StripeContainer from "../Stripe/StripeContainer";
 import PrivateRoute from "./PrivateRoute";
 const Home = lazy(() => import("../Pages/Home/Home"));
 const Courses = lazy(() => import("../Pages/Courses/Courses"));
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
           {
             path: "/profile",
             element: <Profile />,
+          },
+          {
+            path: "/payment",
+            element: <StripeContainer />,
           },
           {
             path: "/find",

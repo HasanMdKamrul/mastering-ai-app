@@ -131,13 +131,15 @@ const Checkout = () => {
                     <span>Everything in Free</span>
                   </li>
                 </ul>
-                <button
-                  type="button"
-                  className="inline-block px-5 py-3 font-semibold tracking-wider text-center bg-sky-400\
+                <Link to="/payment">
+                  <button
+                    type="button"
+                    className="inline-block px-5 py-3 font-semibold tracking-wider text-center bg-sky-400\
                    rounded-2xl shadow-2xl bg-warning  dark:bg-violet-400 dark:text-gray-900"
-                >
-                  Get Started
-                </button>
+                  >
+                    Get Started
+                  </button>
+                </Link>
               </div>
             </div>
             <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
@@ -216,7 +218,7 @@ const Checkout = () => {
                 </ul>
                 <Link
                   rel="noopener noreferrer"
-                  to="/pricing"
+                  to="/payment"
                   className="inline-block w-full px-5 py-3 font-bold tracking-wider bg-success text-center rounded-2xl shadow-2xl  dark:bg-gray-800 dark:text-violet-400"
                 >
                   Get Started
@@ -314,7 +316,7 @@ const Checkout = () => {
                 </ul>
                 <Link
                   rel="noopener noreferrer"
-                  to="/pricing"
+                  to="/payment"
                   className="inline-block w-full px-5 py-3 font-semibold rounded-2xl shadow-2xl tracking-wider text-center bg-info dark:bg-violet-400 dark:text-gray-900"
                 >
                   Get Started
